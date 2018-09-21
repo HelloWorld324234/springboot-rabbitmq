@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: springboot-rabbitmq
+  rabbitmq:
+    host: 127.0.0.1
+    username: guest
+    password: guest
+    publisher-confirms: true
+    virtual-host: /
