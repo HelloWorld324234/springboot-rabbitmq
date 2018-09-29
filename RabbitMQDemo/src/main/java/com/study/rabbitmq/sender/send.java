@@ -26,7 +26,7 @@ public class send {
         //2、创建消息通道
         Channel channel = connection.createChannel();
         channel.queueDeclare(QUEUE_NAME,false,false,false,null);
-        String msg = "HelloWorld";
+        String msg = getMessage(new String[]{"a","b","c","d"});
         channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());
         System.err.println("send---->" + msg);
 
@@ -35,5 +35,25 @@ public class send {
         connection.close();
 
     }
+
+    public static String getMessage(String[] strings) {
+        if (strings.length < 1) {
+            return "HelloWorld";
+        }
+        return joinStrings(strings, " ");
+    }
+
+    private static String joinStrings(String[] strings, String s) {
+        int length = strings.length;
+        if (length == 0) {
+            return "";
+        }
+        StringBuilder wrods = new StringBuilder(strings[0]);
+        for (int i = 1; i < length; i++) {
+            wrods.append(s).append(strings[i]);
+        }
+        return wrods.toString();
+    }
+
 
 }

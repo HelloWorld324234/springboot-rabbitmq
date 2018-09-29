@@ -39,8 +39,20 @@ public class Recvevier {
             QueueingConsumer.Delivery delivery = consumer.nextDelivery();
             String message = new String(delivery.getBody());
             System.out.println(" [x] Received '" + message + "'");
+
+            doWork(message);
+            System.err.println("Done");
+
         }
 
+    }
+
+    public static void doWork(String task) throws InterruptedException {
+        for (char ch : task.toCharArray()) {
+            if (ch == '.') {
+                Thread.sleep(1000);
+            }
+        }
     }
 
 }
