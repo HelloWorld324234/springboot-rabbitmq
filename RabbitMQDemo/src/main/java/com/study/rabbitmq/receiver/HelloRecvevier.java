@@ -11,10 +11,10 @@ import java.util.concurrent.TimeoutException;
 
 /**
  * @Auther: yule
- * @Date: 2018/9/21 0021 15:06
- * @Description: 接受消息
+ * @Date: 2018/9/30 0030 09:28
+ * @Description: 多接受者测试
  */
-public class Recvevier {
+public class HelloRecvevier {
 
     private final static String QUEUE_NAME = "hello";
 
@@ -39,20 +39,11 @@ public class Recvevier {
             QueueingConsumer.Delivery delivery = consumer.nextDelivery();
             String message = new String(delivery.getBody());
             System.err.println(" [x] Received '" + message + "'");
-
-            doWork(message);
-            System.err.println("Done");
-
         }
+
 
     }
 
-    public static void doWork(String task) throws InterruptedException {
-        for (char ch : task.toCharArray()) {
-            if (ch == '.') {
-                Thread.sleep(1000);
-            }
-        }
-    }
+
 
 }

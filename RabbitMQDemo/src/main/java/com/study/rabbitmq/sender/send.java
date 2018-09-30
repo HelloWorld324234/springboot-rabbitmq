@@ -26,7 +26,8 @@ public class send {
         //2、创建消息通道
         Channel channel = connection.createChannel();
         channel.queueDeclare(QUEUE_NAME,false,false,false,null);
-        String msg = getMessage(new String[]{"a","b","c","d"});
+        //String msg = getMessage(new String[]{"a","b","c","d"});
+        String msg = "Hello World";
         channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());
         System.err.println("send---->" + msg);
 
