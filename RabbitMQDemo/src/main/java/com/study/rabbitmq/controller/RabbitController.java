@@ -2,6 +2,7 @@ package com.study.rabbitmq.controller;
 
 import com.study.rabbitmq.sender.HelloSender;
 import com.study.rabbitmq.sender.HelloSender2;
+import com.study.rabbitmq.sender.UserSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,9 @@ public class RabbitController {
 
     @Autowired
     private HelloSender2 helloSender2;
+
+    @Autowired
+    private UserSender userSender;
 
     @PostMapping("/hello")
     public void hello() {
@@ -44,6 +48,11 @@ public class RabbitController {
             helloSender.send();
             helloSender2.send("helloSender2--->send--->");
         }
+    }
+
+    @PostMapping("/send_user")
+    public void sendUser() {
+        userSender.sendUser();
     }
 
 }

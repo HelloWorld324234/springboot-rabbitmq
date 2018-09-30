@@ -24,7 +24,7 @@ public class TopicQueueSender {
 
     private final static String queue = "helloQueue";
 
-    private final static String user = "user";
+    private final static String user = "userQueue";
 
     @Bean
     public Queue helloQueue() {
