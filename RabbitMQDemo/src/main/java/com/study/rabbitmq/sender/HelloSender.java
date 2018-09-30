@@ -23,4 +23,11 @@ public class HelloSender {
         this.amqpTemplate.convertAndSend("helloQueue", msg);
     }
 
+    public String sendMany(String str) {
+        String msg = "Hello : " + str + "  " + new Date().toString();
+        System.err.println("HelloSender--->" + msg);
+        this.amqpTemplate.convertAndSend("helloQueue", msg);
+        return msg;
+    }
+
 }

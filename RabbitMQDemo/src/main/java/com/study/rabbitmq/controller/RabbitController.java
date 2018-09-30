@@ -23,4 +23,15 @@ public class RabbitController {
         helloSender.send();
     }
 
+    @PostMapping("/onetomany")
+    public String oneToMany() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0 ; i <= 10; i++) {
+            String s = helloSender.sendMany("msg" + i);
+            stringBuilder.append(s);
+            stringBuilder.append("/r/n");
+        }
+        return stringBuilder.toString();
+    }
+
 }
